@@ -32,7 +32,7 @@ Container(
 )
 ```
 
-![screenshot1](https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/1.png)
+![screenshot1](https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/1.gif)
 
 
 
