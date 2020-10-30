@@ -2,9 +2,17 @@
 
 `ContainedTabBarView` encapsulates `TabController`, `TabBar` and `TabBarView` into a single, easy to use, constrainable `Widget`.
 
+## Usage
+
+To use this package, add `contained_tab_bar_view` as a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/packages-and-plugins/using-packages).
+
 ## Example
 
 ```dart
+import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+
+...
+
 Container(
     padding: const EdgeInsets.all(8.0),
     color: Colors.blue,
