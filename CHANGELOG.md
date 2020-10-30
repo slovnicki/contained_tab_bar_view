@@ -1,3 +1,4 @@
-## [0.0.1] - TODO: Add release date.
+## [0.1.0] - Initial version.
 
-* TODO: Describe initial release.
+- `ContainedTabBarView` can be placed as a chid of `Container`, without causing overflows.
+- `onChange` works
