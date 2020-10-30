@@ -1,6 +1,6 @@
 # ContainedTabBarView
 
-ContainedTabBarView encapsulates TabController, TabBar and TabBarView into a single, easy to use, constrainable Widget.
+`ContainedTabBarView` encapsulates `TabController`, `TabBar` and `TabBarView` into a single, easy to use, constrainable `Widget`.
 
 ## Example
 
