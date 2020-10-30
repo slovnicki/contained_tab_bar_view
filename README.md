@@ -1,14 +1,33 @@
-# contained_tab_bar_view
+# ContainedTabBarView
 
-A new Flutter package project.
+ContainedTabBarView encapsulates TabController, TabBar and TabBarView into a single, easy to use, constrainable Widget.
 
-## Getting Started
+## Example
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+```dart
+Container(
+    padding: const EdgeInsets.all(8.0),
+    color: Colors.blue,
+    width: 200,
+    height: 300,
+    child: ContainedTabBarView(
+        tabs: [
+            Text('First'),
+            Text('Second')
+        ],
+        views: [
+            Container(color: Colors.red),
+            Container(color: Colors.green)
+        ],
+        onChange: (index) => print(index),
+    ),
+)
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![screenshot1](https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/docs/assets/1.png)
+
+
+
+
+
+
