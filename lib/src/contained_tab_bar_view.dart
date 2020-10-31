@@ -8,7 +8,7 @@ class ContainedTabBarView extends StatefulWidget {
   final List<Widget> views;
   final TabBarProperties tabBarProperties;
   final TabBarPosition tabBarPosition;
-  final double tabBarHeight;
+  final TabBarAlignment tabBarAlignment;
   final int initialIndex;
   final void Function(int) onChange;
 
@@ -17,7 +17,7 @@ class ContainedTabBarView extends StatefulWidget {
     this.views,
     this.tabBarProperties: TabBarProperties.empty,
     this.tabBarPosition: TabBarPosition.top,
-    this.tabBarHeight: kToolbarHeight,
+    this.tabBarAlignment: TabBarAlignment.center,
     this.initialIndex: 0,
     this.onChange
   }): assert(tabs != null),
@@ -45,6 +45,7 @@ class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTic
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints)
         => Column(
+          crossAxisAlignment: _decideAlignment(widget.tabBarAlignment),
           children: _buildChildren(constraints)
         )
     );
@@ -53,11 +54,13 @@ class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTic
   List<Widget> _buildChildren(BoxConstraints constraints) {
     List<Widget> children = [
       Container(
-        height: widget.tabBarHeight,
+        width: widget.tabBarProperties.width,
+        height: widget.tabBarProperties.height,
+        decoration: widget.tabBarProperties.backgroundDecoration,
         child: _buildTabBar()
       ),
       Container(
-        height: constraints.maxHeight - widget.tabBarHeight,
+        height: constraints.maxHeight -  widget.tabBarProperties.height,
         child: TabBarView(
           controller: _controller,
           children: widget.views
@@ -76,18 +79,27 @@ class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTic
     return TabBar(
       controller: _controller,
       tabs: widget.tabs,
-      indicator: widget.tabBarProperties?.indicator,
-      indicatorColor: widget.tabBarProperties?.indicatorColor,
-      indicatorPadding: widget.tabBarProperties?.indicatorPadding,
-      indicatorSize: widget.tabBarProperties?.indicatorSize,
-      indicatorWeight: widget.tabBarProperties?.indicatorWeight,
-      isScrollable: widget.tabBarProperties?.isScrollable,
-      labelColor: widget.tabBarProperties?.labelColor,
-      labelPadding: widget.tabBarProperties?.labelPadding,
-      labelStyle: widget.tabBarProperties?.labelStyle,
-      unselectedLabelColor: widget.tabBarProperties?.unselectedLabelColor,
-      unselectedLabelStyle: widget.tabBarProperties?.unselectedLabelStyle,
+      indicator: widget.tabBarProperties.indicator,
+      indicatorColor: widget.tabBarProperties.indicatorColor,
+      indicatorPadding: widget.tabBarProperties.indicatorPadding,
+      indicatorSize: widget.tabBarProperties.indicatorSize,
+      indicatorWeight: widget.tabBarProperties.indicatorWeight,
+      isScrollable: widget.tabBarProperties.isScrollable,
+      labelColor: widget.tabBarProperties.labelColor,
+      labelPadding: widget.tabBarProperties.labelPadding,
+      labelStyle: widget.tabBarProperties.labelStyle,
+      unselectedLabelColor: widget.tabBarProperties.unselectedLabelColor,
+      unselectedLabelStyle: widget.tabBarProperties.unselectedLabelStyle,
     );
+  }
+
+  CrossAxisAlignment _decideAlignment(TabBarAlignment alignment) {
+    switch (alignment) {
+      case TabBarAlignment.start: return CrossAxisAlignment.start;
+      case TabBarAlignment.center: return CrossAxisAlignment.center;
+      case TabBarAlignment.end: return CrossAxisAlignment.end;
+      default: return CrossAxisAlignment.center;
+    }
   }
 
   @override

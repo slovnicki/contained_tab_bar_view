@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TabBarProperties {
+  final double width;
+  final double height;
+  final BoxDecoration backgroundDecoration;
+
   final Decoration indicator;
   final Color indicatorColor;
   final EdgeInsetsGeometry indicatorPadding;
@@ -19,6 +23,9 @@ class TabBarProperties {
   static const TabBarProperties empty = TabBarProperties();
 
   const TabBarProperties({
+    this.width,
+    this.height: kToolbarHeight,
+    this.backgroundDecoration,
     this.indicator,
     this.indicatorColor,
     this.indicatorPadding: const EdgeInsets.all(0.0),
