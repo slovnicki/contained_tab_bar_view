@@ -6,7 +6,7 @@
 
 To use this package, add `contained_tab_bar_view` as a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/packages-and-plugins/using-packages).
 
-## Example
+## Examples
 
 ```dart
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
@@ -32,10 +32,15 @@ Container(
 )
 ```
 
-![screenshot1](https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/1.gif)
+<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/01.gif" alt="example 1" width="270">
 
+<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/2.gif" alt="example 2" width="270">
 
+<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/3.gif" alt="example 3" width="270">
 
+<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/4.gif" alt="example 4" width="270">
+
+<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/5.gif" alt="example 5" width="270">
 
 
 
