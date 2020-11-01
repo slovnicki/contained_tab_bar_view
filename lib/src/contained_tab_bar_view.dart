@@ -19,15 +19,16 @@ class ContainedTabBarView extends StatefulWidget {
     this.tabBarPosition: TabBarPosition.top,
     this.tabBarAlignment: TabBarAlignment.center,
     this.initialIndex: 0,
-    this.onChange
-  }): assert(tabs != null),
-      assert(views != null);
+    this.onChange,
+  })  : assert(tabs != null),
+        assert(views != null);
 
   @override
   State<StatefulWidget> createState() => ContainedTabBarViewState();
 }
 
-class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTickerProviderStateMixin {
+class ContainedTabBarViewState extends State<ContainedTabBarView>
+    with SingleTickerProviderStateMixin {
   TabController _controller;
 
   @override
@@ -36,18 +37,17 @@ class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTic
     _controller = TabController(
       length: widget.tabs.length,
       vsync: this,
-      initialIndex: widget.initialIndex
+      initialIndex: widget.initialIndex,
     )..addListener(() => widget.onChange(_controller.index));
   }
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints)
-        => Column(
-          crossAxisAlignment: _decideAlignment(widget.tabBarAlignment),
-          children: _buildChildren(constraints)
-        )
+      builder: (BuildContext context, BoxConstraints constraints) => Column(
+        crossAxisAlignment: _decideAlignment(widget.tabBarAlignment),
+        children: _buildChildren(constraints),
+      ),
     );
   }
 
@@ -57,14 +57,11 @@ class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTic
         width: widget.tabBarProperties.width,
         height: widget.tabBarProperties.height,
         decoration: widget.tabBarProperties.backgroundDecoration,
-        child: _buildTabBar()
+        child: _buildTabBar(),
       ),
       Container(
-        height: constraints.maxHeight -  widget.tabBarProperties.height,
-        child: TabBarView(
-          controller: _controller,
-          children: widget.views
-        ),
+        height: constraints.maxHeight - widget.tabBarProperties.height,
+        child: TabBarView(controller: _controller, children: widget.views),
       )
     ];
 
@@ -95,10 +92,14 @@ class ContainedTabBarViewState extends State<ContainedTabBarView> with SingleTic
 
   CrossAxisAlignment _decideAlignment(TabBarAlignment alignment) {
     switch (alignment) {
-      case TabBarAlignment.start: return CrossAxisAlignment.start;
-      case TabBarAlignment.center: return CrossAxisAlignment.center;
-      case TabBarAlignment.end: return CrossAxisAlignment.end;
-      default: return CrossAxisAlignment.center;
+      case TabBarAlignment.start:
+        return CrossAxisAlignment.start;
+      case TabBarAlignment.center:
+        return CrossAxisAlignment.center;
+      case TabBarAlignment.end:
+        return CrossAxisAlignment.end;
+      default:
+        return CrossAxisAlignment.center;
     }
   }
 

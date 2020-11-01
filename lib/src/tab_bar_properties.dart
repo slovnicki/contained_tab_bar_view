@@ -16,7 +16,7 @@ class TabBarProperties {
   final Color labelColor;
   final EdgeInsetsGeometry labelPadding;
   final TextStyle labelStyle;
-  
+
   final Color unselectedLabelColor;
   final TextStyle unselectedLabelStyle;
 
@@ -36,6 +36,6 @@ class TabBarProperties {
     this.labelPadding: const EdgeInsets.all(0.0),
     this.labelStyle,
     this.unselectedLabelColor,
-    this.unselectedLabelStyle
+    this.unselectedLabelStyle,
   });
 }

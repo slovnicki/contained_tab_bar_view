@@ -15,7 +15,10 @@ class ContainerIndicator extends Decoration {
 
   @override
   _ContainerPainter createBoxPainter([void Function() onChanged]) {
-    return _ContainerPainter(onChanged, decoration: this);
+    return _ContainerPainter(
+      onChanged,
+      decoration: this,
+    );
   }
 }
 
@@ -23,19 +26,20 @@ class _ContainerPainter extends BoxPainter {
   final ContainerIndicator decoration;
 
   _ContainerPainter(
-    void Function() onChanged,
-    {this.decoration: const ContainerIndicator()}
-  ): super(onChanged);
+    void Function() onChanged, {
+    this.decoration: const ContainerIndicator(),
+  }) : super(onChanged);
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     final RRect indicatorRRect = RRect.fromRectAndRadius(
       Rect.fromCenter(
-        center: Offset(offset.dx + configuration.size.width / 2, configuration.size.height / 2),
+        center: Offset(offset.dx + configuration.size.width / 2,
+            configuration.size.height / 2),
         width: this.decoration.width,
-        height: this.decoration.height
+        height: this.decoration.height,
       ),
-      Radius.circular(this.decoration.radius)
+      Radius.circular(this.decoration.radius),
     );
 
     final Paint paint = Paint()
