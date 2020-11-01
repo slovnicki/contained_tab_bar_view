@@ -15,13 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.1"
-  bubble_tab_indicator:
-    dependency: "direct main"
-    description:
-      name: bubble_tab_indicator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.4"
   characters:
     dependency: transitive
     description:
@@ -56,7 +49,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.3.0"
+    version: "0.3.1"
   cupertino_icons:
     dependency: "direct main"
     description:

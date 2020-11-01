@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 
@@ -22,6 +21,7 @@ class App extends StatelessWidget {
               ExampleButton(route: '/example3'),
               ExampleButton(route: '/example4'),
               ExampleButton(route: '/example5'),
+              ExampleButton(route: '/example6'),
             ],
           ),
         ),
@@ -32,6 +32,7 @@ class App extends StatelessWidget {
         '/example3': (context) => Example3(),
         '/example4': (context) => Example4(),
         '/example5': (context) => Example5(),
+        '/example6': (context) => Example6(),
       },
     );
   }
@@ -62,7 +63,7 @@ class Example1 extends StatelessWidget {
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          color: Colors.blue[400],
+          color: Colors.blue,
           width: 200,
           height: 300,
           child: ContainedTabBarView(
@@ -146,10 +147,11 @@ class Example4 extends StatelessWidget {
           Text('Second')
         ],
         tabBarProperties: TabBarProperties(
-          indicator: BubbleTabIndicator(
-            indicatorHeight: 32.0,
-            indicatorColor: Colors.blue,
-            tabBarIndicatorSize: TabBarIndicatorSize.tab,
+          indicator: ContainerIndicator(
+            width: 64.0,
+            height: 32.0,
+            radius: 16.0,
+            color: Colors.blue,
           ),
           labelColor: Colors.white,
           unselectedLabelColor: Colors.grey[400]
@@ -200,6 +202,52 @@ class Example5 extends StatelessWidget {
               indicatorColor: Colors.transparent,
               labelColor: Colors.white,
               unselectedLabelColor: Colors.grey[400],
+            ),
+            views: [
+              Container(color: Colors.red),
+              Container(color: Colors.green)
+            ],
+            onChange: (index) => print(index),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Example6 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Example 6'),
+      ),
+      body: Center(
+        child: Container(
+          width: 300,
+          height: 200,
+          child: ContainedTabBarView(
+            tabs: [
+              ...[1,2].map((e) => Container(
+                width: 16,
+                height: 16,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(color: Colors.grey[600]),
+                  borderRadius: BorderRadius.all(Radius.circular(4.0))
+                ),
+              )).toList()          
+            ],
+            tabBarPosition: TabBarPosition.bottom,
+            tabBarProperties: TabBarProperties(
+              width: 64,
+              height: 32,
+              indicator: ContainerIndicator(
+                width: 16.0,
+                height: 16.0,
+                radius: 4.0,
+                color: Colors.blue,
+              ),
             ),
             views: [
               Container(color: Colors.red),
