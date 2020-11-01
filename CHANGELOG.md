@@ -1,3 +1,7 @@
+## [0.3.2] - 1.11.2020.
+
+- format code with `dartfmt`
+
 ## [0.3.1] - 1.11.2020.
 
 - add `ContainerIndicator`
