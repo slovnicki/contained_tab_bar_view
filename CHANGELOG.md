@@ -1,3 +1,7 @@
+## [0.3.1] - 1.11.2020.
+
+- add `ContainerIndicator`
+
 ## [0.3.0] - 31.10.2020.
 
 - add `tabBarAlignment` and `TabBarProperties.backgroundDecoration` options
