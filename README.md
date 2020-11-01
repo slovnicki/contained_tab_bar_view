@@ -32,7 +32,7 @@ Container(
 )
 ```
 
-<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/01.gif" alt="example 1" width="220" style="margin-right:16px;margin-bottom:16px">  
+<img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/1.gif" alt="example 1" width="220" style="margin-right:16px;margin-bottom:16px">  
 
 <img src="https://raw.githubusercontent.com/slovnicki/contained_tab_bar_view/master/doc/assets/2.gif" alt="example 2" width="220" style="margin-right:16px;margin-bottom:16px">
 
