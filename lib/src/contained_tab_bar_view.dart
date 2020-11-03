@@ -107,38 +107,36 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
   }
 
   Widget _buildTabBar() {
-    final Stack stack = widget.tabBarProperties.backgroundStack ?? Stack();
-    Widget tabBar = Container(
+    final List<Widget> backgroundStackChildren = [];
+    if (widget.tabBarProperties.background != null) {
+      backgroundStackChildren.add(widget.tabBarProperties.background);
+    }
+    backgroundStackChildren.add(
+      Positioned.fill(
+        child: TabBar(
+          controller: _controller,
+          tabs: widget.tabs,
+          indicator: widget.tabBarProperties.indicator,
+          indicatorColor: widget.tabBarProperties.indicatorColor,
+          indicatorPadding: widget.tabBarProperties.indicatorPadding,
+          indicatorSize: widget.tabBarProperties.indicatorSize,
+          indicatorWeight: widget.tabBarProperties.indicatorWeight,
+          isScrollable: widget.tabBarProperties.isScrollable,
+          labelColor: widget.tabBarProperties.labelColor,
+          labelPadding: widget.tabBarProperties.labelPadding,
+          labelStyle: widget.tabBarProperties.labelStyle,
+          unselectedLabelColor: widget.tabBarProperties.unselectedLabelColor,
+          unselectedLabelStyle: widget.tabBarProperties.unselectedLabelStyle,
+        ),
+      ),
+    );
+
+    final Widget tabBar = SizedBox(
       width: widget.tabBarProperties.width,
       height: widget.tabBarProperties.height,
       child: Stack(
-        alignment: stack.alignment,
-        clipBehavior: stack.clipBehavior,
-        fit: stack.fit,
-        overflow: stack.overflow,
-        textDirection: stack.textDirection,
-        children: [
-          ...stack.children,
-          Positioned.fill(
-            child: TabBar(
-              controller: _controller,
-              tabs: widget.tabs,
-              indicator: widget.tabBarProperties.indicator,
-              indicatorColor: widget.tabBarProperties.indicatorColor,
-              indicatorPadding: widget.tabBarProperties.indicatorPadding,
-              indicatorSize: widget.tabBarProperties.indicatorSize,
-              indicatorWeight: widget.tabBarProperties.indicatorWeight,
-              isScrollable: widget.tabBarProperties.isScrollable,
-              labelColor: widget.tabBarProperties.labelColor,
-              labelPadding: widget.tabBarProperties.labelPadding,
-              labelStyle: widget.tabBarProperties.labelStyle,
-              unselectedLabelColor:
-                  widget.tabBarProperties.unselectedLabelColor,
-              unselectedLabelStyle:
-                  widget.tabBarProperties.unselectedLabelStyle,
-            ),
-          ),
-        ],
+        alignment: AlignmentDirectional.center,
+        children: backgroundStackChildren,
       ),
     );
 
