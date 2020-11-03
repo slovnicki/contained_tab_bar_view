@@ -167,23 +167,19 @@ class Example5 extends StatelessWidget {
             tabBarProperties: TabBarProperties(
               width: 200,
               height: 32,
-              backgroundStack: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          spreadRadius: 0.5,
-                          blurRadius: 2,
-                          offset: Offset(1, -1),
-                        ),
-                      ],
+              background: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      spreadRadius: 0.5,
+                      blurRadius: 2,
+                      offset: Offset(1, -1),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               position: TabBarPosition.bottom,
               alignment: TabBarAlignment.end,
@@ -303,24 +299,22 @@ class Example8 extends StatelessWidget {
           child: ContainedTabBarView(
             tabs: [Text('First'), Text('Second')],
             tabBarProperties: TabBarProperties(
-              backgroundStack: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          spreadRadius: 0.5,
-                          blurRadius: 2,
-                          offset: Offset(1, -1),
-                        ),
-                      ],
+              outerPadding: EdgeInsets.only(bottom: 8.0),
+              background: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      spreadRadius: 0.5,
+                      blurRadius: 2,
+                      offset: Offset(1, -1),
                     ),
-                  ),
-                  Container(
+                  ],
+                ),
+                child: Center(
+                  child: Container(
                     width: 16,
                     height: 16,
                     decoration: BoxDecoration(
@@ -328,7 +322,7 @@ class Example8 extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                   ),
-                ],
+                ),
               ),
             ),
             views: [
@@ -370,6 +364,7 @@ class Example9 extends StatelessWidget {
             ],
             tabBarProperties: TabBarProperties(
               height: 48,
+              width: 48,
               position: TabBarPosition.right,
               indicator: ContainerIndicator(
                 width: 16.0,
