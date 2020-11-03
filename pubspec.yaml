@@ -1,5 +1,5 @@
 name: contained_tab_bar_view
-description: ContainedTabBarView encapsulates TabController, TabBar and TabBarView into a single, easy to use Widget.
+description: Encapsulate TabController, TabBar and TabBarView into a single customizable Widget.
 version: 0.5.0
 homepage: https://github.com/slovnicki/contained_tab_bar_view
 repository: https://github.com/slovnicki/contained_tab_bar_view
