@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class TabBarProperties {
   final double width;
   final double height;
-  final BoxDecoration backgroundDecoration;
+  final Stack backgroundStack;
   final TabBarPosition position;
   final TabBarAlignment alignment;
 
@@ -28,7 +28,7 @@ class TabBarProperties {
   const TabBarProperties({
     this.width,
     this.height: kToolbarHeight,
-    this.backgroundDecoration,
+    this.backgroundStack,
     this.position: TabBarPosition.top,
     this.alignment: TabBarAlignment.center,
     this.indicator,

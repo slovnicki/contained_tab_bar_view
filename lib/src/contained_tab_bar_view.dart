@@ -77,12 +77,24 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
   }
 
   List<Widget> _buildChildren(BoxConstraints constraints) {
+    final Stack stack = widget.tabBarProperties.backgroundStack ?? Stack();
     List<Widget> children = [
       Container(
         width: widget.tabBarProperties.width,
         height: widget.tabBarProperties.height,
-        decoration: widget.tabBarProperties.backgroundDecoration,
-        child: _buildTabBar(),
+        child: Stack(
+          alignment: stack.alignment,
+          clipBehavior: stack.clipBehavior,
+          fit: stack.fit,
+          overflow: stack.overflow,
+          textDirection: stack.textDirection,
+          children: [
+            ...stack.children,
+            Positioned.fill(
+              child: _buildTabBar(),
+            )
+          ],
+        ),
       ),
       Container(
         height: constraints.maxHeight - widget.tabBarProperties.height,
