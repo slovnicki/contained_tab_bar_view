@@ -1,8 +1,3 @@
-enum TabBarPosition {
-  top,
-  bottom,
-  left, // TODO
-  right // TODO
-}
+enum TabBarPosition { top, bottom, left, right }
 
 enum TabBarAlignment { start, center, end }
