@@ -13,6 +13,7 @@ class ContainedTabBarView extends StatefulWidget {
   final void Function(int) onChange;
 
   ContainedTabBarView({
+    Key key,
     this.tabs,
     this.views,
     this.tabBarProperties: TabBarProperties.empty,
@@ -21,7 +22,8 @@ class ContainedTabBarView extends StatefulWidget {
     this.initialIndex: 0,
     this.onChange,
   })  : assert(tabs != null),
-        assert(views != null);
+        assert(views != null),
+        super(key: key);
 
   @override
   State<StatefulWidget> createState() => ContainedTabBarViewState();
@@ -39,6 +41,33 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       vsync: this,
       initialIndex: widget.initialIndex,
     )..addListener(() => widget.onChange(_controller.index));
+  }
+
+  void animateTo(
+    int value, {
+    Duration duration: kTabScrollDuration,
+    Curve curve: Curves.ease,
+  }) =>
+      _controller.animateTo(value, duration: duration, curve: curve);
+
+  void next({
+    Duration duration: kTabScrollDuration,
+    Curve curve: Curves.ease,
+  }) {
+    if (_controller.index == _controller.length - 1) {
+      return;
+    }
+    this.animateTo(_controller.index + 1);
+  }
+
+  void previous({
+    Duration duration: kTabScrollDuration,
+    Curve curve: Curves.ease,
+  }) {
+    if (_controller.index == 0) {
+      return;
+    }
+    this.animateTo(_controller.index - 1);
   }
 
   @override
@@ -61,7 +90,10 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       ),
       Container(
         height: constraints.maxHeight - widget.tabBarProperties.height,
-        child: TabBarView(controller: _controller, children: widget.views),
+        child: TabBarView(
+          controller: _controller,
+          children: widget.views,
+        ),
       )
     ];
 
