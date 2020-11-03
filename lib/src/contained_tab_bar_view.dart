@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 import 'enums.dart';
 import 'tab_bar_properties.dart';
@@ -69,64 +70,113 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) => Column(
+      builder: (BuildContext context, BoxConstraints constraints) =>
+          _buildFlex(constraints),
+    );
+  }
+
+  Widget _buildFlex(BoxConstraints constraints) {
+    if (widget.tabBarProperties.position == TabBarPosition.left ||
+        widget.tabBarProperties.position == TabBarPosition.right) {
+      return Row(
         crossAxisAlignment: _decideAlignment(widget.tabBarProperties.alignment),
         children: _buildChildren(constraints),
-      ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: _decideAlignment(widget.tabBarProperties.alignment),
+      children: _buildChildren(constraints),
     );
   }
 
   List<Widget> _buildChildren(BoxConstraints constraints) {
-    final Stack stack = widget.tabBarProperties.backgroundStack ?? Stack();
     List<Widget> children = [
-      Container(
-        width: widget.tabBarProperties.width,
-        height: widget.tabBarProperties.height,
-        child: Stack(
-          alignment: stack.alignment,
-          clipBehavior: stack.clipBehavior,
-          fit: stack.fit,
-          overflow: stack.overflow,
-          textDirection: stack.textDirection,
-          children: [
-            ...stack.children,
-            Positioned.fill(
-              child: _buildTabBar(),
-            )
-          ],
-        ),
-      ),
-      Container(
-        height: constraints.maxHeight - widget.tabBarProperties.height,
-        child: TabBarView(
-          controller: _controller,
-          children: widget.views,
-        ),
-      )
+      _buildTabBar(),
+      _buildTabBarView(constraints),
     ];
 
-    if (widget.tabBarProperties.position == TabBarPosition.bottom) {
+    if (widget.tabBarProperties.position == TabBarPosition.bottom ||
+        widget.tabBarProperties.position == TabBarPosition.right) {
       return children.reversed.toList();
     }
 
     return children;
   }
 
-  TabBar _buildTabBar() {
-    return TabBar(
-      controller: _controller,
-      tabs: widget.tabs,
-      indicator: widget.tabBarProperties.indicator,
-      indicatorColor: widget.tabBarProperties.indicatorColor,
-      indicatorPadding: widget.tabBarProperties.indicatorPadding,
-      indicatorSize: widget.tabBarProperties.indicatorSize,
-      indicatorWeight: widget.tabBarProperties.indicatorWeight,
-      isScrollable: widget.tabBarProperties.isScrollable,
-      labelColor: widget.tabBarProperties.labelColor,
-      labelPadding: widget.tabBarProperties.labelPadding,
-      labelStyle: widget.tabBarProperties.labelStyle,
-      unselectedLabelColor: widget.tabBarProperties.unselectedLabelColor,
-      unselectedLabelStyle: widget.tabBarProperties.unselectedLabelStyle,
+  Widget _buildTabBar() {
+    final Stack stack = widget.tabBarProperties.backgroundStack ?? Stack();
+    Widget tabBar = Container(
+      width: widget.tabBarProperties.width,
+      height: widget.tabBarProperties.height,
+      child: Stack(
+        alignment: stack.alignment,
+        clipBehavior: stack.clipBehavior,
+        fit: stack.fit,
+        overflow: stack.overflow,
+        textDirection: stack.textDirection,
+        children: [
+          ...stack.children,
+          Positioned.fill(
+            child: TabBar(
+              controller: _controller,
+              tabs: widget.tabs,
+              indicator: widget.tabBarProperties.indicator,
+              indicatorColor: widget.tabBarProperties.indicatorColor,
+              indicatorPadding: widget.tabBarProperties.indicatorPadding,
+              indicatorSize: widget.tabBarProperties.indicatorSize,
+              indicatorWeight: widget.tabBarProperties.indicatorWeight,
+              isScrollable: widget.tabBarProperties.isScrollable,
+              labelColor: widget.tabBarProperties.labelColor,
+              labelPadding: widget.tabBarProperties.labelPadding,
+              labelStyle: widget.tabBarProperties.labelStyle,
+              unselectedLabelColor:
+                  widget.tabBarProperties.unselectedLabelColor,
+              unselectedLabelStyle:
+                  widget.tabBarProperties.unselectedLabelStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (widget.tabBarProperties.position == TabBarPosition.left) {
+      return Expanded(
+        child: Transform.rotate(
+          angle: -math.pi / 2,
+          child: tabBar,
+        ),
+      );
+    }
+
+    if (widget.tabBarProperties.position == TabBarPosition.right) {
+      return Expanded(
+        child: Transform.rotate(
+          angle: math.pi / 2,
+          child: tabBar,
+        ),
+      );
+    }
+
+    return tabBar;
+  }
+
+  Widget _buildTabBarView(BoxConstraints constraints) {
+    if (widget.tabBarProperties.position == TabBarPosition.left ||
+        widget.tabBarProperties.position == TabBarPosition.right) {
+      return Container(
+        width: constraints.maxWidth - widget.tabBarProperties.height,
+        child: TabBarView(
+          controller: _controller,
+          children: widget.views,
+        ),
+      );
+    }
+    return Container(
+      height: constraints.maxHeight - widget.tabBarProperties.height,
+      child: TabBarView(
+        controller: _controller,
+        children: widget.views,
+      ),
     );
   }
 
