@@ -7,6 +7,7 @@ class TabBarProperties {
   final Stack backgroundStack;
   final TabBarPosition position;
   final TabBarAlignment alignment;
+  final EdgeInsets outerPadding;
 
   final Decoration indicator;
   final Color indicatorColor;
@@ -31,6 +32,7 @@ class TabBarProperties {
     this.backgroundStack,
     this.position: TabBarPosition.top,
     this.alignment: TabBarAlignment.center,
+    this.outerPadding: const EdgeInsets.all(0.0),
     this.indicator,
     this.indicatorColor,
     this.indicatorPadding: const EdgeInsets.all(0.0),

@@ -91,7 +91,10 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
 
   List<Widget> _buildChildren(BoxConstraints constraints) {
     List<Widget> children = [
-      _buildTabBar(),
+      Padding(
+        padding: widget.tabBarProperties.outerPadding,
+        child: _buildTabBar(),
+      ),
       _buildTabBarView(constraints),
     ];
 
@@ -164,7 +167,10 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
     if (widget.tabBarProperties.position == TabBarPosition.left ||
         widget.tabBarProperties.position == TabBarPosition.right) {
       return Container(
-        width: constraints.maxWidth - widget.tabBarProperties.height,
+        width: constraints.maxWidth -
+            widget.tabBarProperties.height -
+            widget.tabBarProperties.outerPadding.top -
+            widget.tabBarProperties.outerPadding.bottom,
         child: TabBarView(
           controller: _controller,
           children: widget.views,
@@ -172,7 +178,10 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       );
     }
     return Container(
-      height: constraints.maxHeight - widget.tabBarProperties.height,
+      height: constraints.maxHeight -
+          widget.tabBarProperties.height -
+          widget.tabBarProperties.outerPadding.top -
+          widget.tabBarProperties.outerPadding.bottom,
       child: TabBarView(
         controller: _controller,
         children: widget.views,
