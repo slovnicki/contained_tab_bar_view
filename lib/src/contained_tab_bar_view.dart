@@ -7,8 +7,6 @@ class ContainedTabBarView extends StatefulWidget {
   final List<Widget> tabs;
   final List<Widget> views;
   final TabBarProperties tabBarProperties;
-  final TabBarPosition tabBarPosition;
-  final TabBarAlignment tabBarAlignment;
   final int initialIndex;
   final void Function(int) onChange;
 
@@ -17,8 +15,6 @@ class ContainedTabBarView extends StatefulWidget {
     this.tabs,
     this.views,
     this.tabBarProperties: TabBarProperties.empty,
-    this.tabBarPosition: TabBarPosition.top,
-    this.tabBarAlignment: TabBarAlignment.center,
     this.initialIndex: 0,
     this.onChange,
   })  : assert(tabs != null),
@@ -74,7 +70,7 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) => Column(
-        crossAxisAlignment: _decideAlignment(widget.tabBarAlignment),
+        crossAxisAlignment: _decideAlignment(widget.tabBarProperties.alignment),
         children: _buildChildren(constraints),
       ),
     );
@@ -97,7 +93,7 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       )
     ];
 
-    if (widget.tabBarPosition == TabBarPosition.bottom) {
+    if (widget.tabBarProperties.position == TabBarPosition.bottom) {
       return children.reversed.toList();
     }
 
