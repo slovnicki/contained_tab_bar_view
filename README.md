@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   ...  
-  contained_tab_bar_view: ^0.5.0
+  contained_tab_bar_view: 0.6.0
 ```
 
 - get the package
