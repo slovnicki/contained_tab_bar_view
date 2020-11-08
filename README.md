@@ -85,7 +85,7 @@ Container(
 
 ## Intermediate
 
-All the properties that can be set for a `TabBar` are accessible for setting via `tabBarProperties`. Also, there are many more for the customization of `TabBar`'s appearance. To create your own ("container-based") `indicator`, you can use `ContainerIndicator` decoration (see examples 4 and 6).
+All the properties that can be set for a `TabBar` are accessible for setting via `tabBarProperties`. Also, there are many more for the customization of `TabBar`'s appearance. To create your own ("container-based") `indicator`, you can use `ContainerTabIndicator` decoration (see examples 4 and 6) which is a part of this package, but also a separate package whose documentation can be found [here](https://pub.dev/packages/container_tab_indicator). Of course, you can use any other tab bar indicator of your liking.
 
 ### TabBarProperties
 
@@ -97,7 +97,7 @@ All the properties that can be set for a `TabBar` are accessible for setting via
 | position             | `TabBarPosition`      | `TabBarPosition.top`        | Position of `TabBar` in respect to it's `TabBarView`. See example 5. |
 | alignment            | `TabBarAlignment`     | `TabBarAlignment.center`    | Alignment of `TabBar` (if it's width is not full available) within `TabBar`-`TabBarView` Flex. See example 5. |
 | outerPadding         | `EdgeInsets`          | `const EdgeInsets.all(0.0)` | Padding around `TabBar`. See example 8. |
-| indicator            | `Decoration `         | /                         | The decoration for the active tab. You can use `ContainerIndicator` from this package. See example 4. Also, [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicator.html) |
+| indicator            | `Decoration `         | /                         | The decoration for the active tab. You can use `ContainerTabIndicator` for various customization. See example 4. Also, [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicator.html) |
 | indicatorColor       | `Color `              | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorColor.html) |
 | IndicatorPadding     | `EdgeInsetsGeometry`  | `const EdgeInsets.all(0.0)` | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorPadding.html) |
 | indicatorSize        | `TabBarIndicatorSize` | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorSize.html) |

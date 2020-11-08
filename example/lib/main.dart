@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 
-import 'dart:math' as math;
-
 void main() => runApp(App());
 
 class App extends StatelessWidget {
@@ -134,7 +132,7 @@ class Example4 extends StatelessWidget {
       body: ContainedTabBarView(
         tabs: [Text('First'), Text('Second')],
         tabBarProperties: TabBarProperties(
-            indicator: ContainerIndicator(
+            indicator: ContainerTabIndicator(
               width: 64.0,
               height: 32.0,
               radius: BorderRadius.circular(16.0),
@@ -229,7 +227,7 @@ class Example6 extends StatelessWidget {
               width: 64,
               height: 32,
               position: TabBarPosition.bottom,
-              indicator: ContainerIndicator(
+              indicator: ContainerTabIndicator(
                 width: 16.0,
                 height: 16.0,
                 radius: BorderRadius.circular(4.0),
@@ -366,7 +364,7 @@ class Example9 extends StatelessWidget {
               height: 48,
               width: 48,
               position: TabBarPosition.right,
-              indicator: ContainerIndicator(
+              indicator: ContainerTabIndicator(
                 width: 16.0,
                 height: 16.0,
                 radius: BorderRadius.circular(8.0),
