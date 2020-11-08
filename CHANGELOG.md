@@ -1,3 +1,8 @@
+# 0.6.0
+
+- export `container_tab_indicator` package as a part of this package
+- leave `ContainerIndicator` for now, but will be removed in the future
+
 # 0.5.0
 
 - add `outerPadding` option to `TabBarProperties`
