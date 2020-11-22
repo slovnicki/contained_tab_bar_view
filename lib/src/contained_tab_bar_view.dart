@@ -3,19 +3,22 @@ import 'dart:math' as math;
 
 import 'enums.dart';
 import 'tab_bar_properties.dart';
+import 'tab_bar_view_properties.dart';
 
 class ContainedTabBarView extends StatefulWidget {
   final List<Widget> tabs;
-  final List<Widget> views;
   final TabBarProperties tabBarProperties;
+  final List<Widget> views;
+  final TabBarViewProperties tabBarViewProperties;
   final int initialIndex;
   final void Function(int) onChange;
 
   ContainedTabBarView({
     Key key,
     this.tabs,
+    this.tabBarProperties: const TabBarProperties(),
     this.views,
-    this.tabBarProperties: TabBarProperties.empty,
+    this.tabBarViewProperties: const TabBarViewProperties(),
     this.initialIndex: 0,
     this.onChange,
   })  : assert(tabs != null),
@@ -177,6 +180,8 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
         child: TabBarView(
           controller: _controller,
           children: widget.views,
+          dragStartBehavior: widget.tabBarViewProperties.dragStartBehavior,
+          physics: widget.tabBarViewProperties.physics,
         ),
       );
     }
@@ -188,6 +193,8 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       child: TabBarView(
         controller: _controller,
         children: widget.views,
+        dragStartBehavior: widget.tabBarViewProperties.dragStartBehavior,
+        physics: widget.tabBarViewProperties.physics,
       ),
     );
   }

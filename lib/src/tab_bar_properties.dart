@@ -25,8 +25,6 @@ class TabBarProperties {
   final Color unselectedLabelColor;
   final TextStyle unselectedLabelStyle;
 
-  static const TabBarProperties empty = TabBarProperties();
-
   const TabBarProperties({
     this.width,
     this.height: kToolbarHeight,
