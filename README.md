@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   ...  
-  contained_tab_bar_view: 0.6.0
+  contained_tab_bar_view: 0.7.0
 ```
 
 - get the package
@@ -33,6 +33,7 @@ import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 - [Basic Examples](#basic)
 - [Intermediate](#intermediate)
     - [TabBarProperties](#tabbarproperties)
+    - [TabBarViewProperties](#tabbarviewproperties)
     - [TabBarPosition](#tabbarposition)
     - [TabBarAlignment](#tabbaralignment)
     - [Intermediate Examples](#intermediate-examples)
@@ -85,9 +86,9 @@ Container(
 
 ## Intermediate
 
-All the properties that can be set for a `TabBar` are accessible for setting via `tabBarProperties`. Also, there are many more for the customization of `TabBar`'s appearance. To create your own ("container-based") `indicator`, you can use `ContainerTabIndicator` decoration (see examples 4 and 6) which is a part of this package, but also a separate package whose documentation can be found [here](https://pub.dev/packages/container_tab_indicator). Of course, you can use any other tab bar indicator of your liking.
-
 ### TabBarProperties
+
+All the properties that can be set for a `TabBar` are accessible for setting via `tabBarProperties`. Also, there are many more for the customization of `TabBar`'s appearance. To create your own ("container-based") `indicator`, you can use `ContainerTabIndicator` decoration (see examples 4 and 6) which is a part of this package, but also a separate package whose documentation can be found [here](https://pub.dev/packages/container_tab_indicator). Of course, you can use any other tab bar indicator of your liking.
 
 | Property             | Type                |      Default value        |  Description |
 |:---------------------|:--------------------|:--------------------------|:------|
@@ -104,10 +105,30 @@ All the properties that can be set for a `TabBar` are accessible for setting via
 | indicatirWeight      | `double `             | `2.0 `                    | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorWeight.html) |
 | isScrollable         | `bool  `              | `false`                     | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/isScrollable.html) |
 | labelColor           | `Color  `             | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/labelColor.html) |
-| labelPadding         | `EdgeInsetsGeometry`  | const EdgeInsets.all(0.0) | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/labelPadding.html) |
+| labelPadding         | `EdgeInsetsGeometry`  | `const EdgeInsets.all(0.0)` | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/labelPadding.html) |
 | labelStyle           | `TextStyle`           | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/labelStyle.html) |
 | unselectedLabelColor | `Color `              | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/unselectedLabelColor.html) |
 | unselectedLabelStyle | `TextStyle`           | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/unselectedLabelStyle.html) |
+
+### TabBarViewProperties
+
+All the properties that can be set for a `TabBarView` are accessible for setting via `tabBarViewProperties`.
+
+| Property             | Type                |      Default value        |  Description |
+|:---------------------|:--------------------|:--------------------------|:------|
+| dragStartBehavior                | `DragStartBehavior`             | `DragStartBehavior.start`                         | [See TabBarView documentation](https://api.flutter.dev/flutter/material/TabBarView/dragStartBehavior.html) |
+| physics               | `ScrollPhysics `             |  (platform specific)          | [See TabBarView documentation](https://api.flutter.dev/flutter/material/TabBarView/physics.html) |
+
+
+For example, if you want to disable swiping behavior on the `TabBarView`, set the option like this:
+```dart
+ContainedTabBarView(
+  ...
+  tabBarViewProperties: TabBarViewProperties(
+    physics: NeverScrollableScrollPhysics(),
+  ),
+)
+```
 
 
 ### TabBarPosition
