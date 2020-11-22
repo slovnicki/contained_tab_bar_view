@@ -1,3 +1,8 @@
+# 0.7.0
+
+- add `tabBarViewProperties`
+- add `innerPadding` option to `tabBarProperties`
+
 # 0.6.0
 
 - export `container_tab_indicator` package as a part of this package

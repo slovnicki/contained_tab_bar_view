@@ -1,6 +1,6 @@
 name: contained_tab_bar_view
 description: Encapsulates TabController, TabBar and TabBarView into a single customizable Widget.
-version: 0.6.0
+version: 0.7.0
 homepage: https://github.com/slovnicki/contained_tab_bar_view
 repository: https://github.com/slovnicki/contained_tab_bar_view
 
