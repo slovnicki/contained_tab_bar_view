@@ -25,6 +25,7 @@ class App extends StatelessWidget {
               ExampleButton(route: '/example7'),
               ExampleButton(route: '/example8'),
               ExampleButton(route: '/example9'),
+              ExampleButton(route: '/example10'),
             ],
           ),
         ),
@@ -39,6 +40,7 @@ class App extends StatelessWidget {
         '/example7': (context) => Example7(),
         '/example8': (context) => Example8(),
         '/example9': (context) => Example9(),
+        '/example10': (context) => Example10(),
       },
     );
   }
@@ -377,6 +379,36 @@ class Example9 extends StatelessWidget {
               Container(color: Colors.red),
               Container(color: Colors.green)
             ],
+            onChange: (index) => print(index),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Example10 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Example 10'),
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          color: Colors.blue,
+          width: 200,
+          height: 300,
+          child: ContainedTabBarView(
+            tabs: [Text('First'), Text('Second')],
+            views: [
+              Container(color: Colors.red),
+              Container(color: Colors.green)
+            ],
+            tabBarViewProperties: TabBarViewProperties(
+              physics: NeverScrollableScrollPhysics(),
+            ),
             onChange: (index) => print(index),
           ),
         ),
