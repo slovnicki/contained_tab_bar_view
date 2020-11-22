@@ -1,3 +1,4 @@
+import 'package:contained_tab_bar_view/src/contained_tab_controller.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -9,6 +10,8 @@ class ContainedTabBarView extends StatefulWidget {
   final List<Widget> views;
   final TabBarProperties tabBarProperties;
   final int initialIndex;
+  final Duration duration;
+  final Curve curve;
   final void Function(int) onChange;
 
   ContainedTabBarView({
@@ -17,6 +20,8 @@ class ContainedTabBarView extends StatefulWidget {
     this.views,
     this.tabBarProperties: TabBarProperties.empty,
     this.initialIndex: 0,
+    this.duration,
+    this.curve,
     this.onChange,
   })  : assert(tabs != null),
         assert(views != null),
@@ -28,28 +33,30 @@ class ContainedTabBarView extends StatefulWidget {
 
 class ContainedTabBarViewState extends State<ContainedTabBarView>
     with SingleTickerProviderStateMixin {
-  TabController _controller;
+  ContainedTabController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = TabController(
+    _controller = ContainedTabController(
       length: widget.tabs.length,
       vsync: this,
       initialIndex: widget.initialIndex,
+      duration: widget.duration,
+      curve: widget.curve,
     )..addListener(() => widget.onChange(_controller.index));
   }
 
   void animateTo(
     int value, {
-    Duration duration: kTabScrollDuration,
-    Curve curve: Curves.ease,
+    Duration duration,
+    Curve curve,
   }) =>
       _controller.animateTo(value, duration: duration, curve: curve);
 
   void next({
-    Duration duration: kTabScrollDuration,
-    Curve curve: Curves.ease,
+    Duration duration,
+    Curve curve,
   }) {
     if (_controller.index == _controller.length - 1) {
       return;
@@ -58,8 +65,8 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
   }
 
   void previous({
-    Duration duration: kTabScrollDuration,
-    Curve curve: Curves.ease,
+    Duration duration,
+    Curve curve,
   }) {
     if (_controller.index == 0) {
       return;

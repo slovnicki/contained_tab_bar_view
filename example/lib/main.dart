@@ -145,6 +145,7 @@ class Example4 extends StatelessWidget {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.grey[400]),
         views: [Container(color: Colors.red), Container(color: Colors.green)],
+        duration: Duration(seconds: 5),
         onChange: (index) => print(index),
       ),
     );
