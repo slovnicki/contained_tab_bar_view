@@ -113,20 +113,23 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
     }
     backgroundStackChildren.add(
       Positioned.fill(
-        child: TabBar(
-          controller: _controller,
-          tabs: widget.tabs,
-          indicator: widget.tabBarProperties.indicator,
-          indicatorColor: widget.tabBarProperties.indicatorColor,
-          indicatorPadding: widget.tabBarProperties.indicatorPadding,
-          indicatorSize: widget.tabBarProperties.indicatorSize,
-          indicatorWeight: widget.tabBarProperties.indicatorWeight,
-          isScrollable: widget.tabBarProperties.isScrollable,
-          labelColor: widget.tabBarProperties.labelColor,
-          labelPadding: widget.tabBarProperties.labelPadding,
-          labelStyle: widget.tabBarProperties.labelStyle,
-          unselectedLabelColor: widget.tabBarProperties.unselectedLabelColor,
-          unselectedLabelStyle: widget.tabBarProperties.unselectedLabelStyle,
+        child: Padding(
+          padding: widget.tabBarProperties.innerPadding,
+          child: TabBar(
+            controller: _controller,
+            tabs: widget.tabs,
+            indicator: widget.tabBarProperties.indicator,
+            indicatorColor: widget.tabBarProperties.indicatorColor,
+            indicatorPadding: widget.tabBarProperties.indicatorPadding,
+            indicatorSize: widget.tabBarProperties.indicatorSize,
+            indicatorWeight: widget.tabBarProperties.indicatorWeight,
+            isScrollable: widget.tabBarProperties.isScrollable,
+            labelColor: widget.tabBarProperties.labelColor,
+            labelPadding: widget.tabBarProperties.labelPadding,
+            labelStyle: widget.tabBarProperties.labelStyle,
+            unselectedLabelColor: widget.tabBarProperties.unselectedLabelColor,
+            unselectedLabelStyle: widget.tabBarProperties.unselectedLabelStyle,
+          ),
         ),
       ),
     );
@@ -162,13 +165,15 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
   }
 
   Widget _buildTabBarView(BoxConstraints constraints) {
+    final EdgeInsets outerPadding =
+        widget.tabBarProperties.outerPadding.resolve(TextDirection.ltr);
     if (widget.tabBarProperties.position == TabBarPosition.left ||
         widget.tabBarProperties.position == TabBarPosition.right) {
       return Container(
         width: constraints.maxWidth -
             widget.tabBarProperties.height -
-            widget.tabBarProperties.outerPadding.top -
-            widget.tabBarProperties.outerPadding.bottom,
+            outerPadding.top -
+            outerPadding.bottom,
         child: TabBarView(
           controller: _controller,
           children: widget.views,
@@ -178,8 +183,8 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
     return Container(
       height: constraints.maxHeight -
           widget.tabBarProperties.height -
-          widget.tabBarProperties.outerPadding.top -
-          widget.tabBarProperties.outerPadding.bottom,
+          outerPadding.top -
+          outerPadding.bottom,
       child: TabBarView(
         controller: _controller,
         children: widget.views,

@@ -132,9 +132,11 @@ class Example4 extends StatelessWidget {
       body: ContainedTabBarView(
         tabs: [Text('First'), Text('Second')],
         tabBarProperties: TabBarProperties(
+            innerPadding: const EdgeInsets.symmetric(
+              horizontal: 32.0,
+              vertical: 8.0,
+            ),
             indicator: ContainerTabIndicator(
-              width: 64.0,
-              height: 32.0,
               radius: BorderRadius.circular(16.0),
               color: Colors.blue,
               borderWidth: 2.0,
