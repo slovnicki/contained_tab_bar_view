@@ -1,5 +1,7 @@
 # ContainedTabBarView
 
+[![pub package](https://img.shields.io/pub/v/contained_tab_bar_view.svg)](https://pub.dev/packages/contained_tab_bar_view)
+
 `ContainedTabBarView` encapsulates `TabController`, `TabBar` and `TabBarView` into a single, easy to use `Widget` and lets you customize its appearance without worrying about internal workings of "`TabBar` ecosystem".
 
 ## Install
