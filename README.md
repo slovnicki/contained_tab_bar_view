@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   ...  
-  contained_tab_bar_view: 0.7.0
+  contained_tab_bar_view: 0.7.1
 ```
 
 - get the package
