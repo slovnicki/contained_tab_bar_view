@@ -1,3 +1,7 @@
+# 0.7.1
+
+- fix calling `onChange` twice when tab is tapped
+
 # 0.7.0
 
 - add `tabBarViewProperties`
