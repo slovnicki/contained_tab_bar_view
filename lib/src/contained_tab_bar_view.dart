@@ -53,6 +53,9 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       });
   }
 
+  // TODO expose it through onChange also
+  bool get indexIsChanging => _controller.indexIsChanging;
+
   void animateTo(
     int value, {
     Duration duration: kTabScrollDuration,
