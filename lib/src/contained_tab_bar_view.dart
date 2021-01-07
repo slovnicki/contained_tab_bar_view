@@ -12,6 +12,7 @@ class ContainedTabBarView extends StatefulWidget {
   final TabBarViewProperties tabBarViewProperties;
   final int initialIndex;
   final void Function(int) onChange;
+  final bool callOnChangeTwiceWhenTapped;
 
   ContainedTabBarView({
     Key key,
@@ -21,6 +22,7 @@ class ContainedTabBarView extends StatefulWidget {
     this.tabBarViewProperties: const TabBarViewProperties(),
     this.initialIndex: 0,
     this.onChange,
+    this.callOnChangeTwiceWhenTapped = false,
   })  : assert(tabs != null),
         assert(views != null),
         super(key: key);
@@ -40,7 +42,13 @@ class ContainedTabBarViewState extends State<ContainedTabBarView>
       length: widget.tabs.length,
       vsync: this,
       initialIndex: widget.initialIndex,
-    )..addListener(() => widget.onChange(_controller.index));
+    )..addListener((){
+      if (widget.callOnChangeTwiceWhenTapped && !_controller.indexIsChanging) {
+        widget.onChange(_controller.index);
+      } else {
+        widget.onChange(_controller.index);
+      }
+    });
   }
 
   void animateTo(
