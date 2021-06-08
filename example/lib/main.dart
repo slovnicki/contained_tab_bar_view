@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 
 void main() => runApp(App());
@@ -47,16 +46,18 @@ class App extends StatelessWidget {
 }
 
 class ExampleButton extends StatelessWidget {
+  ExampleButton({required this.route});
   final String route;
-
-  ExampleButton({this.route});
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-        color: Colors.blue,
-        onPressed: () => Navigator.of(context).pushNamed(this.route),
-        child: Text(this.route, style: TextStyle(color: Colors.white)));
+    return ElevatedButton(
+      onPressed: () => Navigator.of(context).pushNamed(route),
+      child: Text(
+        route,
+        style: TextStyle(color: Colors.white),
+      ),
+    );
   }
 }
 
@@ -68,17 +69,27 @@ class Example1 extends StatelessWidget {
         title: Text('Example 1'),
       ),
       body: Center(
-          child: Container(
-        padding: const EdgeInsets.all(8.0),
-        color: Colors.blue,
-        width: 200,
-        height: 300,
-        child: ContainedTabBarView(
-          tabs: [Text('First'), Text('Second')],
-          views: [Container(color: Colors.red), Container(color: Colors.green)],
-          onChange: (index) => print(index),
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          color: Colors.blue,
+          width: 200,
+          height: 300,
+          child: ContainedTabBarView(
+            tabs: [
+              Text('First'),
+              Text('Second'),
+            ],
+            views: [
+              Container(color: Colors.red),
+              Container(color: Colors.green)
+            ],
+            onChange: (index) {
+              print(index);
+            },
+            callOnChangeWhileIndexIsChanging: true,
+          ),
         ),
-      )),
+      ),
     );
   }
 }
@@ -95,7 +106,10 @@ class Example2 extends StatelessWidget {
           Text('First', style: TextStyle(color: Colors.black)),
           Text('Second', style: TextStyle(color: Colors.black))
         ],
-        views: [Container(color: Colors.red), Container(color: Colors.green)],
+        views: [
+          Container(color: Colors.red),
+          Container(color: Colors.green),
+        ],
         onChange: (index) => print(index),
       ),
     );
@@ -110,14 +124,21 @@ class Example3 extends StatelessWidget {
         title: Text('Example 3'),
       ),
       body: ContainedTabBarView(
-        tabs: [Text('First'), Text('Second')],
+        tabs: [
+          Text('First'),
+          Text('Second'),
+        ],
         tabBarProperties: TabBarProperties(
-            height: 32.0,
-            indicatorColor: Colors.black,
-            indicatorWeight: 6.0,
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey[400]),
-        views: [Container(color: Colors.red), Container(color: Colors.green)],
+          height: 32.0,
+          indicatorColor: Colors.black,
+          indicatorWeight: 6.0,
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.grey[400],
+        ),
+        views: [
+          Container(color: Colors.red),
+          Container(color: Colors.green),
+        ],
         onChange: (index) => print(index),
       ),
     );
@@ -132,21 +153,28 @@ class Example4 extends StatelessWidget {
         title: Text('Example 4'),
       ),
       body: ContainedTabBarView(
-        tabs: [Text('First'), Text('Second')],
+        tabs: [
+          Text('First'),
+          Text('Second'),
+        ],
         tabBarProperties: TabBarProperties(
-            innerPadding: const EdgeInsets.symmetric(
-              horizontal: 32.0,
-              vertical: 8.0,
-            ),
-            indicator: ContainerTabIndicator(
-              radius: BorderRadius.circular(16.0),
-              color: Colors.blue,
-              borderWidth: 2.0,
-              borderColor: Colors.black,
-            ),
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.grey[400]),
-        views: [Container(color: Colors.red), Container(color: Colors.green)],
+          padding: const EdgeInsets.symmetric(
+            horizontal: 32.0,
+            vertical: 8.0,
+          ),
+          indicator: ContainerTabIndicator(
+            radius: BorderRadius.circular(16.0),
+            color: Colors.blue,
+            borderWidth: 2.0,
+            borderColor: Colors.black,
+          ),
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey[400],
+        ),
+        views: [
+          Container(color: Colors.red),
+          Container(color: Colors.green),
+        ],
         onChange: (index) => print(index),
       ),
     );
@@ -165,7 +193,10 @@ class Example5 extends StatelessWidget {
           height: 300,
           width: 360,
           child: ContainedTabBarView(
-            tabs: [Text('First'), Text('Second')],
+            tabs: [
+              Text('First'),
+              Text('Second'),
+            ],
             tabBarProperties: TabBarProperties(
               width: 200,
               height: 32,
@@ -220,9 +251,12 @@ class Example6 extends StatelessWidget {
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(color: Colors.grey[600]),
-                          borderRadius: BorderRadius.all(Radius.circular(4.0))),
+                        color: Colors.transparent,
+                        border: Border.all(color: Colors.grey[600]!),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(4.0),
+                        ),
+                      ),
                     ),
                   )
                   .toList(),
@@ -256,8 +290,14 @@ class Example7 extends StatelessWidget {
     GlobalKey<ContainedTabBarViewState> _key = GlobalKey();
     ContainedTabBarView containedTabBarView = ContainedTabBarView(
       key: _key,
-      tabs: [Text('First'), Text('Second')],
-      views: [Container(color: Colors.red), Container(color: Colors.green)],
+      tabs: [
+        Text('First'),
+        Text('Second'),
+      ],
+      views: [
+        Container(color: Colors.red),
+        Container(color: Colors.green),
+      ],
       onChange: (index) => print(index),
     );
 
@@ -265,24 +305,28 @@ class Example7 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Example 7'),
       ),
-      body: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        RaisedButton(
-          child: Icon(Icons.arrow_back_ios),
-          onPressed: () => _key.currentState.previous(),
-        ),
-        Center(
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () => _key.currentState?.previous(),
+            child: Icon(Icons.arrow_back_ios),
+          ),
+          Center(
             child: Container(
-          padding: const EdgeInsets.all(8.0),
-          color: Colors.blue,
-          width: 200,
-          height: 300,
-          child: containedTabBarView,
-        )),
-        RaisedButton(
-          child: Icon(Icons.arrow_forward_ios),
-          onPressed: () => _key.currentState.next(),
-        ),
-      ]),
+              padding: const EdgeInsets.all(8.0),
+              color: Colors.blue,
+              width: 200,
+              height: 300,
+              child: containedTabBarView,
+            ),
+          ),
+          ElevatedButton(
+            child: Icon(Icons.arrow_forward_ios),
+            onPressed: () => _key.currentState?.next(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -299,9 +343,12 @@ class Example8 extends StatelessWidget {
           width: 200,
           height: 300,
           child: ContainedTabBarView(
-            tabs: [Text('First'), Text('Second')],
+            tabs: [
+              Text('First'),
+              Text('Second'),
+            ],
             tabBarProperties: TabBarProperties(
-              outerPadding: EdgeInsets.only(bottom: 8.0),
+              margin: EdgeInsets.only(bottom: 8.0),
               background: Container(
                 decoration: BoxDecoration(
                   color: Colors.blue,
@@ -353,15 +400,19 @@ class Example9 extends StatelessWidget {
           child: ContainedTabBarView(
             tabs: [
               ...[1, 2]
-                  .map((e) => Container(
-                        width: 16,
-                        height: 16,
-                        decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border.all(color: Colors.grey[600]),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0))),
-                      ))
+                  .map(
+                    (e) => Container(
+                      width: 16,
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        border: Border.all(color: Colors.grey[600]!),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                  )
                   .toList()
             ],
             tabBarProperties: TabBarProperties(
@@ -401,7 +452,10 @@ class Example10 extends StatelessWidget {
           width: 200,
           height: 300,
           child: ContainedTabBarView(
-            tabs: [Text('First'), Text('Second')],
+            tabs: [
+              Text('First'),
+              Text('Second'),
+            ],
             views: [
               Container(color: Colors.red),
               Container(color: Colors.green)
