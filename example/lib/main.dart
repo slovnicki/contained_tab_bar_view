@@ -83,10 +83,7 @@ class Example1 extends StatelessWidget {
               Container(color: Colors.red),
               Container(color: Colors.green)
             ],
-            onChange: (index) {
-              print(index);
-            },
-            callOnChangeWhileIndexIsChanging: true,
+            onChange: (index) => print(index),
           ),
         ),
       ),
