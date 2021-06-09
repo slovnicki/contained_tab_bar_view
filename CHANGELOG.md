@@ -1,3 +1,9 @@
+# 0.8.0
+
+- **Breaking** (`TabBarProperties`): Rename `innerPadding` to `padding` and `outerPadding` to margin
+- **Migrate** to null safety
+- **Add** doc comments
+
 # 0.7.1
 
 - fix calling `onChange` twice when tab is tapped
