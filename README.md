@@ -41,7 +41,7 @@ Container(
   child: ContainedTabBarView(
     tabs: [
       Text('First'),
-      Text('Second')
+      Text('Second'),
     ],
     views: [
       Container(color: Colors.red),
@@ -49,7 +49,7 @@ Container(
     ],
     onChange: (index) => print(index),
   ),
-)
+),
 ```
 
 <p align="center">
@@ -132,8 +132,6 @@ ContainedTabBarView(
   tabBarProperties: TabBarProperties(
     width: 200,
     height: 32,
-    position: TabBarPosition.bottom,
-    alignment: TabBarAlignment.end,
     background: Container(
       decoration: BoxDecoration(
         color: Colors.blue,
@@ -148,6 +146,8 @@ ContainedTabBarView(
         ],
       ),
     ),
+    position: TabBarPosition.bottom,
+    alignment: TabBarAlignment.end,
     indicatorColor: Colors.transparent,
     labelColor: Colors.white,
     unselectedLabelColor: Colors.grey[400],
@@ -183,11 +183,11 @@ class Example7 extends StatelessWidget {
       key: _key,
       tabs: [
         Text('First'),
-        Text('Second')
+        Text('Second'),
       ],
       views: [
         Container(color: Colors.red),
-        Container(color: Colors.green)
+        Container(color: Colors.green),
       ],
     );
 
@@ -199,8 +199,8 @@ class Example7 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-            child: Icon(Icons.arrow_back_ios),
             onPressed: () => _key.currentState?.previous(),
+            child: Icon(Icons.arrow_back_ios),
           ),
           Center(
             child: Container(
@@ -211,9 +211,9 @@ class Example7 extends StatelessWidget {
               child: containedTabBarView,
             ),
           ),
-          ElevatedButton(
-            child: Icon(Icons.arrow_forward_ios),
+          ElevatedButton(    
             onPressed: () => _key.currentState?.next(),
+            child: Icon(Icons.arrow_forward_ios),
           ),
         ],
       ),
