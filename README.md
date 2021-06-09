@@ -4,46 +4,20 @@
 
 `ContainedTabBarView` encapsulates `TabController`, `TabBar` and `TabBarView` into a single, easy to use `Widget` and lets you customize its appearance without worrying about internal workings of "`TabBar` ecosystem".
 
-## Install
+---
 
-To use this package
-
-- add `contained_tab_bar_view` as a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/packages-and-plugins/using-packages):.
-
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  ...  
-  contained_tab_bar_view: 0.7.1
-```
-
-- get the package
-```bash
-flutter pub get
-```
-
-- import the package
-```dart
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-```
-
-# Table of contents
-
-[Usage](#usage)
-
-- [Basic Examples](#basic)
-- [Intermediate](#intermediate)
-    - [TabBarProperties](#tabbarproperties)
-    - [TabBarViewProperties](#tabbarviewproperties)
-    - [TabBarPosition](#tabbarposition)
-    - [TabBarAlignment](#tabbaralignment)
-    - [Intermediate Examples](#intermediate-examples)
-- [Advanced](#advanced)
-    - [Change tab from another Widget](#change-tab-from-another-widget)
-    - [Advanced Examples](#advanced-examples)
-
-[Contributing](#contributing)
+- [Usage](#usage)
+    - [Basic Examples](#basic)
+    - [Intermediate](#intermediate)
+        - [TabBarProperties](#tabbarproperties)
+        - [TabBarViewProperties](#tabbarviewproperties)
+        - [TabBarPosition](#tabbarposition)
+        - [TabBarAlignment](#tabbaralignment)
+        - [Intermediate Examples](#intermediate-examples)
+    - [Advanced](#advanced)
+        - [Change tab from another Widget](#change-tab-from-another-widget)
+        - [Advanced Examples](#advanced-examples)
+- [Contributing](#contributing)
 
 # Usage
 
@@ -94,17 +68,18 @@ All the properties that can be set for a `TabBar` are accessible for setting via
 
 | Property             | Type                |      Default value        |  Description |
 |:---------------------|:--------------------|:--------------------------|:------|
-| width                | `double`             | /                         | The widht of `TabBar`. If not set, it's full available width. |
-| height               | `double `             |  `kToolbarHeight `          | The height of `TabBar`. The `TabBarView` takes the availbale height minus this value. |
+| width                | `double`             | /                         | The width of `TabBar`. If not set, it's full available width. |
+| height               | `double `             |  `kToolbarHeight `          | The height of `TabBar`. The `TabBarView` takes the available height minus this value. |
 | background           | `Container`           | /                         | Container that is behind the tabs. See example 8. |
 | position             | `TabBarPosition`      | `TabBarPosition.top`        | Position of `TabBar` in respect to it's `TabBarView`. See example 5. |
-| alignment            | `TabBarAlignment`     | `TabBarAlignment.center`    | Alignment of `TabBar` (if it's width is not full available) within `TabBar`-`TabBarView` Flex. See example 5. |
-| outerPadding         | `EdgeInsets`          | `const EdgeInsets.all(0.0)` | Padding around `TabBar`. See example 8. |
+| alignment            | `TabBarAlignment`     | `TabBarAlignment.center`    | Alignment of `TabBar` (if it's width is not full available) within `TabBar`-`TabBarView` flex. See example 5. |
+| padding              | `EdgeInsets`          | `const EdgeInsets.all(0.0)` | The `TabBar`s padding. See example 4. |
+| margin               | `EdgeInsets`          | `const EdgeInsets.all(0.0)` | The `TabBar`s margin. See example 8. |
 | indicator            | `Decoration `         | /                         | The decoration for the active tab. You can use `ContainerTabIndicator` for various customization. See example 4. Also, [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicator.html) |
 | indicatorColor       | `Color `              | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorColor.html) |
 | IndicatorPadding     | `EdgeInsetsGeometry`  | `const EdgeInsets.all(0.0)` | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorPadding.html) |
 | indicatorSize        | `TabBarIndicatorSize` | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorSize.html) |
-| indicatirWeight      | `double `             | `2.0 `                    | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorWeight.html) |
+| indicatorWeight      | `double `             | `2.0 `                    | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorWeight.html) |
 | isScrollable         | `bool  `              | `false`                     | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/isScrollable.html) |
 | labelColor           | `Color  `             | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/labelColor.html) |
 | labelPadding         | `EdgeInsetsGeometry`  | `const EdgeInsets.all(0.0)` | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/labelPadding.html) |
@@ -196,7 +171,7 @@ ContainedTabBarView(
 
 ### Change tab from another Widget
 
-To control the state, i.e. move to another tab, from outside of `ContainedTabBarView` create it with a `GlobalKey` and then use methods exposed from state; `animateTo()`, `next()` and  `previous()`.
+To control the state, i.e. move to another tab, from outside of `ContainedTabBarView` create it with a `GlobalKey` and then use methods exposed from state: `animateTo()`, `next()` and  `previous()`.
 
 ```dart
 // Example 7
@@ -223,9 +198,9 @@ class Example7 extends StatelessWidget {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaisedButton(
+          ElevatedButton(
             child: Icon(Icons.arrow_back_ios),
-            onPressed: () => _key.currentState.previous(),
+            onPressed: () => _key.currentState?.previous(),
           ),
           Center(
             child: Container(
@@ -234,13 +209,13 @@ class Example7 extends StatelessWidget {
               width: 200,
               height: 300,
               child: containedTabBarView,
-            )
+            ),
           ),
-          RaisedButton(
+          ElevatedButton(
             child: Icon(Icons.arrow_forward_ios),
-            onPressed: () => _key.currentState.next(),
+            onPressed: () => _key.currentState?.next(),
           ),
-        ]
+        ],
       ),
     );
   }
