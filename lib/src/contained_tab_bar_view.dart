@@ -28,7 +28,7 @@ class ContainedTabBarView extends StatefulWidget {
 
   /// Typically a list of two or more widgets which are used as tab buttons.
   ///
-  /// The amount of tabs has to match the amount of [views].
+  /// The length of the list has to match the length of the [views] list.
   final List<Widget> tabs;
 
   /// A [TabBarProperties] object which is used for customizing
@@ -37,7 +37,7 @@ class ContainedTabBarView extends StatefulWidget {
 
   /// Typically a list of two or more widgets which are used as tab views.
   ///
-  /// The amount of views has to match the amount of [tabs].
+  /// The length of the list has to match the length of the [tabs] list.
   final List<Widget> views;
 
   /// A [TabBarViewProperties] object which is used for customizing
