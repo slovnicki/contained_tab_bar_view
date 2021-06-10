@@ -25,7 +25,7 @@ All of the below examples can be found under `example`, each written as a simple
 
 ## Basic
 
-Basic usage includes putting a `ContainedTabBarView` into a `Container` whose `constraints` will it obey. Putting a `ContainedTabBarView` directly into a `body` of a `Scaffold` will, expectedly, draw it full-screen.
+Basic usage includes putting a `ContainedTabBarView` into a `Container` whose `constraints` it will obey. Putting a `ContainedTabBarView` directly into a `body` of a `Scaffold` will, expectedly, draw it full-screen.
 
 ```dart
 // Example 1
@@ -77,7 +77,7 @@ All the properties that can be set for a `TabBar` are accessible for setting via
 | margin               | `EdgeInsets`          | `const EdgeInsets.all(0.0)` | The `TabBar`s margin. See example 8. |
 | indicator            | `Decoration `         | /                         | The decoration for the active tab. You can use `ContainerTabIndicator` for various customization. See example 4. Also, [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicator.html) |
 | indicatorColor       | `Color `              | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorColor.html) |
-| IndicatorPadding     | `EdgeInsetsGeometry`  | `const EdgeInsets.all(0.0)` | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorPadding.html) |
+| indicatorPadding     | `EdgeInsetsGeometry`  | `const EdgeInsets.all(0.0)` | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorPadding.html) |
 | indicatorSize        | `TabBarIndicatorSize` | /                         | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorSize.html) |
 | indicatorWeight      | `double `             | `2.0 `                    | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/indicatorWeight.html) |
 | isScrollable         | `bool  `              | `false`                     | [see TabBar documentation](https://api.flutter.dev/flutter/material/TabBar/isScrollable.html) |
